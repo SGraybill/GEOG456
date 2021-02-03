@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scatter</title>
+
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+</head>
+
+<body>
+    <div id="myDiv"></div>
+    <script src="./data/allremittances.json"></script>
+
+    <script>
+        var trace1 = {
+  x: Nepal.Year,
+  y: Nepal.Total_Remittances,
+  mode: 'markers',
+  type: 'scatter',
+
+};
+
+var data = [trace1];
+
+Plotly.newPlot('myDiv', data);
+    </script>
+</body>
+</html>

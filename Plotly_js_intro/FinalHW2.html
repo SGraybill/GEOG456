@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Graph</title>
+
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+</head>
+
+<style>
+  body {
+      background-color: bisque;
+  }
+
+  #daBlueBox {
+      background-color:teal;
+      position: absolute;
+      top: 25%;
+      width: 100%;
+      height: 50%;
+      font-size: x-large;
+  }
+
+  .daLavenderBox {
+      background-color:lavender;
+      position:absolute;
+      top:25%;
+      left:25%;
+      width:50%;
+      height:50%;
+      font-size: medium;
+  }
+
+  #daGreenBox {
+      background-color:darkolivegreen;
+      position:absolute;
+      top:90% ;
+      left:25%;
+      width: 50%;
+      height: 15%;
+      font-size: small;
+  }
+
+  #daGreenBox2 {
+    background-color:darkolivegreen;
+      position:absolute;
+      top:205% ;
+      left:25%;
+      width: 50%;
+      height: 15%;
+      font-size: small;
+  }
+
+  #myDiv2 {
+      position:absolute;
+      top:115% ;
+      left:10%;
+      width: 80%;
+      height: 80%;
+  }
+
+  #myDiv3 {
+    position:absolute;
+      top:230% ;
+      left:10%;
+      width: 80%;
+      height: 80%;
+
+  }
+
+  #daBlackBox {
+    background-color:black;
+      position:absolute;
+      top:320% ;
+      left:25%;
+      width: 50%;
+      height: 10%;
+  }
+
+  h1 {
+      cursor:cell;
+      position: relative;
+      text-align: center;
+      font-family:cursive;
+  }
+
+  h2 {
+      position: relative;
+      text-align: center;
+      font-family:Georgia, 'Times New Roman', Times, serif;
+  }
+
+  h3 {
+    position: relative;
+      text-align: center;
+      font-family:Georgia, 'Times New Roman', Times, serif;
+      font-size: large;
+      color: white;
+  }
+</style>
+
+<body>
+
+    <div id="daBlackBox">
+        <h3>Have a great day!
+        </h3>
+        </div>
+
+  <div id="daBlueBox">
+    <div class="daLavenderBox">
+        <h1 onClick="daAlert()">Welcome! <br> Scroll down for Graphs</h1>
+    </div>
+</div>
+
+<div id="daGreenBox">
+    <h2>
+        Bar Plot Comparison of US and Nepal Annual Remittances <br> 1990-2020
+    </h2>
+</div>
+
+<div id="daGreenBox2">
+    <h2>
+        Scatter Plot Comparison of US and Nepal Annual Remittances <br> 1990-2020
+    </h2>
+
+</div>
+
+    <div id="myDiv2"></div>
+    <script src="./data/remittances.json"></script>
+
+    <script>
+        var trace1 = {
+  x: NepalandUS.Year,
+  y: NepalandUS.US_Remittances,
+  mode: 'markers',
+  type: 'bar',
+  name: 'US Remittances, USD Million',
+  marker: {
+      color:'rgb(142,124,195)'
+  }
+};
+
+var trace2 = {
+  x: NepalandUS.Year,
+  y: NepalandUS.Nepal_Remittances,
+  mode: 'markers',
+  type: 'bar',
+  name: 'Nepal Remittances, USD Million',
+  marker: {
+    color:'rgb(188,189,220)'
+  }
+}
+
+var data = [trace1, trace2];
+
+Plotly.newPlot('myDiv2', data);
+</script>
+
+<div id="myDiv3"></div>
+<script src="./data/remittances.json"></script>
+
+<script>
+    var trace1 = {
+x: NepalandUS.Year,
+y: NepalandUS.US_Remittances,
+mode: 'markers',
+type: 'scatter',
+name: 'US Remittances, USD Million',
+marker: {
+  color:'rgb(142,124,195)'
+}
+
+};
+
+var trace2 = {
+x: NepalandUS.Year,
+y: NepalandUS.Nepal_Remittances,
+mode: 'markers',
+type: 'scatter',
+name: 'Nepal Remittances, USD Million',
+marker: {
+  color:'rgb(188,189,220)'
+}
+};
+
+var data = [trace1, trace2];
+
+
+Plotly.newPlot('myDiv3', data);
+</script> 
+
+</body>
+
+<script>
+  function daAlert() {
+      var daTime = Date();
+      alert("Today's date is :" + daTime);
+  }
+</script>
+
+</html>

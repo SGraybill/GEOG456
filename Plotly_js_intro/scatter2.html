@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scatter2</title>
+
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+</head>
+
+<body>
+    <div id="myDiv3"></div>
+    <script src="./data/remittances.json"></script>
+
+    <script>
+        var trace1 = {
+  x: NepalandUS.Year,
+  y: NepalandUS.US_Remittances,
+  mode: 'markers',
+  type: 'scatter',
+  name: 'US Remittances, USD Million',
+  marker: {
+      color:'rgb(142,124,195)'
+  }
+  
+};
+
+var trace2 = {
+  x: NepalandUS.Year,
+  y: NepalandUS.Nepal_Remittances,
+  mode: 'markers',
+  type: 'scatter',
+  name: 'Nepal Remittances, USD Million',
+  marker: {
+      color:'rgb(188,189,220)'
+  }
+};
+
+var data = [trace1, trace2];
+
+
+Plotly.newPlot('myDiv3', data);
+</script> 
+
+</body>
+</html>
