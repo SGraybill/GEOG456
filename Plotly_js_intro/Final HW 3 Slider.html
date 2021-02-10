@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW3</title>
+
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+
+</head>
+
+<style>
+    body {
+        background-color: bisque;
+    }
+  
+    #daBlueBox {
+        background-color:teal;
+        position: absolute;
+        top: 25%;
+        width: 100%;
+        height: 50%;
+        font-size: x-large;
+    }
+  
+    .daLavenderBox {
+        background-color:lavender;
+        position:absolute;
+        top:25%;
+        left:25%;
+        width:50%;
+        height:50%;
+        font-size: medium;
+    }
+  
+    #daGreenBox {
+        background-color:darkolivegreen;
+        position:absolute;
+        top:90% ;
+        left:25%;
+        width: 50%;
+        height: 15%;
+        font-size: small;
+    }
+  
+    #daGreenBox2 {
+      background-color:darkolivegreen;
+        position:absolute;
+        top:90% ;
+        left:25%;
+        width: 50%;
+        height: 15%;
+        font-size: small;
+    }
+  
+    #myDiv2 {
+        position:absolute;
+        top:115% ;
+        left:10%;
+        width: 80%;
+        height: 80%;
+    }
+  
+    #myDiv3 {
+      position:absolute;
+        top:115% ;
+        left:10%;
+        width: 80%;
+        height: 80%;
+  
+    }
+  
+    #daBlackBox {
+      background-color:black;
+        position:absolute;
+        top:200% ;
+        left:25%;
+        width: 50%;
+        height: 10%;
+    }
+  
+    h1 {
+        cursor:cell;
+        position: relative;
+        text-align: center;
+        font-family:cursive;
+    }
+  
+    h2 {
+        position: relative;
+        text-align: center;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+    }
+  
+    h3 {
+      position: relative;
+        text-align: center;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+        font-size: large;
+        color: white;
+    }
+  
+  .slider {
+  position:relative;
+  top:1000px;
+  left:930px;
+  }
+  
+  
+  </style>
+  
+<body>
+    <div id="daBlackBox">
+        <h3>Have a great day!
+        </h3>
+        </div>
+
+  <div id="daBlueBox">
+    <div class="daLavenderBox">
+        <h1 onClick="daAlert()">Welcome! <br> Scroll down for Graphs</h1>
+    </div>
+</div>
+
+<div id="daGreenBox2">
+    <h2>
+        Net Migrants Comparison US and Nepal <br> 1950-2020
+    </h2>
+
+
+</div>
+
+   
+<div id="myDiv3"></div>
+
+<input id="slide" type="range" value="1" class="slider" oninput="mySlice(this.value)">
+
+<script src="./data/migrant.json"></script>
+
+    <script>
+        var trace3 = {
+  x: migrants.Year,
+  y: migrants.US,
+  mode: 'line',
+  type: 'line',
+  name: 'US Net Migrants, thousands',
+  marker: {
+      color:'rgb(142,124,195)'
+  }
+
+};
+var trace4 = {
+  x: migrants.Year,
+  y: migrants.Nepal,
+  mode: 'line',
+  type: 'line',
+  name: 'Nepal Net Migrants, thousands',
+  marker: {
+      color:'rgb(188,189,220)'
+  }
+};
+
+var data = [trace3, trace4];
+var layout = {
+    xaxis: {
+      fixedrange:true,
+  range: [1950,2022],
+    title: {
+      text: 'Year',
+      font: {
+        family: 'Calibri',
+        size: 14,
+        color: '#000000'
+      }
+    },
+  },
+  yaxis: {
+    fixedrange:true,
+  range: [-2500,9000],
+    title: {
+      text: 'Net Number of Migrants (thousands)',
+      font: {
+        family: 'Calibri',
+        size: 14,
+        color: '#000000'
+      }
+    }
+  }
+};   
+
+mySlice =function(daValue) {
+  trace3.x=migrants.Year.slice(0,daValue)
+  trace3.y=migrants.US.slice(0,daValue)
+  trace3.marker.color='rgb(142,124,195)'.slice(0,daValue)
+
+  trace4.x=migrants.Year.slice(0,daValue)
+  trace4.y=migrants.Nepal.slice(0,daValue)
+  trace4.marker.color='rgb(188,189,220)'.slice(0,daValue)
+  makePlot ()
+}
+
+makePlot=function(){
+  data=[trace3,trace4];
+  Plotly.newPlot('myDiv3', data);
+}
+
+Plotly.newPlot('myDiv3', data, layout);
+</script> 
+
+</body>
+
+<script>
+  function daAlert() {
+      var daTime = Date();
+      alert("Today's date is :" + daTime);
+  }
+</script>
+
+</html>
